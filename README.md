@@ -20,3 +20,9 @@ db.getCollection('orders').aggregate([{$group: { _id: "$shop_group.name", count:
 Нашел магазин с наибольшим числом заказов
 проверил через:
 db.getCollection('orders').find({"shop_group.name":"Пятёрочка" }).count()
+* Пример 5.
+db.users.updateOne({name : "admin", role: "admin"}, {$set: {role : "guest"}})
+Изменение роли учетной записи admin
+* Пример 6.
+db.products.updateOne({name : "Колбаса Докторская"}, {$unset: {promo: true}})
+удаление поля промо у товара
