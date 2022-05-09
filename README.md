@@ -31,16 +31,20 @@ db.products.updateOne({name : "Колбаса Докторская"}, {$unset: {
 
 Создание индексов:
 -------------------
-* Запрос выполняется ~3s :
-**db.users.find({})
-  .sort({ nickname: 1 })
+Запрос выполняется ~3s :
+```
+db.users.find({})
+  .sort({ name: 1 })
   .limit(1)
   .explain('allPlansExecution')
-* Запрос с сокращенным временем выполнения до ~1ms :
-**db.users.createIndex({"nickname" : 1})
-***Определение уникального значения для индексированного поля nickname
-****db.users.find({})
-  .sort({ nickname: 1 })
-  .limit(1)
-  .explain('allPlansExecution')
+```
+  
+Запрос с сокращенным временем выполнения до ~1ms :
+```
+db.users.createIndex({"name" : 1})
 
+db.users.find({})
+  .sort({ name: 1 })
+  .limit(1)
+  .explain('allPlansExecution')
+```
